@@ -1,0 +1,171 @@
+{% extends 'navbar.html' %}
+{% block content %}
+{% load static %}
+    
+
+
+ <style>
+  body {
+      background-image: url('https://images4.alphacoders.com/133/1332044.png'); /* Add your background image path */
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+      /* display: flex; */
+      align-items: center;
+      justify-content: center;
+      font-family: Arial, sans-serif;
+      
+      
+  }
+
+  .container {
+      text-align: center;
+      color: green; /* Text color */
+  }
+
+  form {
+      background-color: transparent;
+      height: 800px;
+      width: 500px;
+      padding-top: 10px;
+      border-radius: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-top: 10%;
+      box-shadow: 0 0 20px yellow; /* Add box shadow for depth */
+      transition: transform 0.3s ease-in-out; /* Add transition for hover effect */
+  }
+
+  form:hover {
+      transform: scale(1.05); /* Scale up on hover */
+  }
+
+  .form-outline {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  h3 {
+      text-align: center;
+      justify-content: center;
+      color: whitesmoke; /* Heading color */
+  }
+
+  input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: none;
+      border-radius: 8%; /* Border-radius for oval shape */
+      outline: none;
+      transition: background-color 0.3s ease-in-out; /* Add transition for background color change */
+      border-color: green;
+      text-align: center;
+      
+  }
+
+  input:hover, input:focus {
+      background-color: pink; /* Background color on hover/focus */
+  }
+
+  button {
+      width: 100%;
+      padding: 10px;
+      background-color: palevioletred; /* Button background color */
+      color: #fff; /* Button text color */
+      border: none;
+      border-radius: 30px; /* Add border-radius for rounded corners */
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out; /* Add transition for background color change */
+  }
+
+  button:hover {
+      background-color: peru; /* Background color on hover */
+  }
+
+  p {
+      color: whitesmoke;
+      margin-top: 5px;
+      font-size: 18px;
+      margin-bottom: 5px;
+  }
+
+  a {
+      color: blueviolet; /* Link color */
+      text-decoration: none;
+      font-weight: bold;
+  }
+
+  a:hover {
+      text-decoration: underline; /* Underline on hover */
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div class="col-md-4">
+              {% for message in messages %}
+                  <h5>
+                      <div class="alert alert-danger">
+                          {{ message }}
+                      </div>
+                  </h5>
+              {% endfor %}
+          </div>
+          <form method="post" action="{% url 'add_user' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-outline">
+                  <h3 >CONNECT WITH SANA</h3>
+                  <input type="text" name="first_name"  placeholder="First Name" /><br>
+              </div>
+              <div class="form-outline">
+                  <input type="address" name="last_name"  placeholder="Last Name" /><br>
+              </div>
+              <div class="form-outline">
+                  <input type="text" name="uname"  placeholder="Username" /><br>
+              </div>
+              <div class="form-outline">
+                  <input type="password" name="password" " placeholder="Password" required/><br>
+              </div>
+              <div class="form-outline">
+                  <input type="password" name="cpassword"  placeholder="Confirm Password" /><br>
+              </div>
+              <div class="form-outline">
+                  <input type="text" name="address"  placeholder="Address" /><br>
+              </div>
+              <div class="form-outline">
+                  <input type="email" name="email"  placeholder="Email" /><br>
+              </div>
+              <div class="form-outline">
+                  <input type="text" name="number"  placeholder="Contact Number" required /><br>
+              </div>
+              <div class="form-outline">
+                  <p>Upload Your Photo</p>
+                  <input type="file" name="file"  accept="image/*">
+              </div> 
+              <button type="submit" >Submit</button>
+              <br>
+              <p class="mt-2"><b>Are You A Member ?</b> <a href="#"><b>Login with Sana</b></a></p>
+          </form>
+      </div>
+      <div class="col-md-4"></div>
+  </div>
+</div>
+
+<br>
+
+<br>
+
+
+
+
+
+
+
+
+      
+      {% endblock %}

@@ -1,0 +1,182 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style> body {
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: #34353b;
+  } 
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 100px;
+}
+
+.skills h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: #fbfbfb;
+  font-family: "Libre Baskerville", serif;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 2.5vh;
+}
+
+.skill-card {
+  height: 20vw;
+  width: 20vw;
+  background-color: red;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5vh;
+  transition: all ease 0.5s;
+}
+
+.skill-card:hover {
+  background-color: #fec86a;
+}
+
+.skill-card img {
+  height: 7.5vw;
+  width: 7.5vw;
+  object-fit: contain;
+}
+
+.skill-card h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #fbfbfb;
+}
+    .skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 100px;
+}
+
+.skills h1 {
+  font-size: 56px;
+  font-weight: 700;
+  color: #fbfbfb;
+  font-family: "Libre Baskerville", serif;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  gap: 2.5vh;
+}
+
+.skill-card {
+  height: 20vw;
+  width: 20vw;
+  background-color: #3d3e42;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5vh;
+  transition: all ease 0.5s;
+}
+
+.skill-card:hover {
+  background-color: #fec86a;
+}
+
+.skill-card img {
+  height: 7.5vw;
+  width: 7.5vw;
+  object-fit: contain;
+}
+
+.skill-card h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #fbfbfb;
+}
+</style>
+
+
+<section class="skills">
+    <h1>MANAGEMENT</h1>
+    <div class="cards">
+        <div class="skill-card">
+            <img src="data:image/png;base64,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" alt="">
+            <h2>ADD PRODUCT</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://img.faballey.com/images/Product/ITP01043Z/3.jpg" alt="">
+            <h2>ADD CATAGORY</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://thirdspacelearning.com/wp-content/uploads/2023/07/Pie-Chart-image-10-US-1.png" alt="">
+            <h2>PIE CART</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipOexGE0UB16bE-40ew5Qa-NBt06AKzbJwF-RrAm=w1080-h608-p-no-v0" alt="">
+            <h2>SANA GROUP</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://static.javatpoint.com/definition/images/staff-definition.png" alt="">
+            <h2>MANAGE STAFF</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/workplace/rebecca-img.png" alt="">
+            <h2>USER DETAILS</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://storage.googleapis.com/twg-content/original_images/product-details-and-reviews-nugget-3.png" alt="">
+            <h2>PRODUCT DETAILS</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://img.freepik.com/free-vector/finance-financial-performance-concept-illustration_53876-40450.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702425600&semt=sph" alt="">
+            <h2>FINANCE</h2>
+        </div>
+ 
+        <div class="skill-card">
+            <img src="https://extension.harvard.edu/wp-content/uploads/sites/8/2022/07/careers-in-corporate-finance.jpg" alt="">
+            <h2>PROFIT</h2>
+        </div>
+        <div class="skill-card">
+            <img src="https://img.freepik.com/free-vector/vip-with-crown-composition_1284-36184.jpg" alt="">
+            <h2>VIP LIST</h2>
+        </div>
+        <div class="skill-card">
+          <img src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/06/05185958/Scope-of-Public-Administration-01-600x547.png" alt="">
+          <h2> ADMINISTRATION</h2>
+      </div>
+      <div class="skill-card">
+        <img src="https://www.thinklink.in/files/blog/150420191518231481456850.png" alt="">
+        <h2>MORE ACCTION</h2>
+    </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

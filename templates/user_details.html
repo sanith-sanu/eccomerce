@@ -1,0 +1,68 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    img {
+        height: 100px;
+        width: 100px;
+    }
+    body{
+        background-image: url("https://images3.alphacoders.com/132/1329893.png");
+        background-size: cover;
+    }
+
+
+    table th {
+            background-color: orangered; /* Dark background color for header */
+            color: #fff;
+        }
+
+        table tr:hover {
+            background-color: pink; /* Light gray background color on hover */
+        }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table text-center"  style="margin-top: 3%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Contact Number</th>
+                        <th scope="col">E-MAil</th>
+                        <th scope="col">Profile Picture</th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in mem %}
+                        <tr>
+                            <td class="pt-4">{{ user.user.username }}</td>
+                            <td class="pt-4">{{ user.address }}</td>
+                            <td class="pt-4">{{ user.number }}</td>
+                            <td class="pt-4">{{ user.user.email }}</td>
+                            <td class="pt-4">
+                                {% if user.image %}
+                                    <img src="{{ user.image.url }}"  style="height: 100px; width: 100px;">
+                                {% else %}
+                                    No image available
+                                {% endif %}
+                            </td>
+                            <td>
+                                
+                                <a role="button" class="btn btn-danger btn-sm" href="{% url 'delete_user' user.id %}">ERADICAE</a>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<h1 style="text-align: center; color: palevioletred; margin-top:3%;"> <b></b>ALL USER DETAILS </b></h1>
+
+{% endblock %}

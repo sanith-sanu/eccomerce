@@ -1,0 +1,70 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+<style>
+    img {
+        height: 100px;
+        width: 100px;
+    }
+
+    body{
+        background-image: url("https://cdn.wallpapersafari.com/97/51/Au6qwZ.jpg");
+        background-size: cover;
+    }
+
+
+    table th {
+            background-color: #343a40; /* Dark background color for header */
+            color: #fff;
+        }
+
+        table tr:hover {
+            background-color: yellow; /* Light gray background color on hover */
+        }
+        
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table text-center"  style="margin-top: 3%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in prod %}
+                        <tr>
+                            <td class="pt-4">{{ product.name }}</td>
+                            <td class="pt-4">{{ product.description }}</td>
+                            <td class="pt-4">{{ product.price }}</td>
+                            <td class="pt-4">{{ product.category.category_name }}</td>
+                            <td class="pt-4">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}"  style="height: 100px; width: 100px;">
+                                {% else %}
+                                    No image available
+                                {% endif %}
+                            </td>
+                            <td>
+                                
+                                <a role="button" class="btn btn-danger btn-sm " href="{% url 'delete_prod' product.id %}">TAKE OUT</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <h4></h4>
+            </table>
+        </div>
+    </div>
+</div>
+
+<h1 style="text-align: center; color: pink; margin-top:3%;"> <b></b>PRODUCT DETAILS </b></h1>
+
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+
+  
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+        background: url('https://wallpapers.com/images/hd/hd-country-life-at-night-vvxmbqzkr4uumuni.jpg') no-repeat center center fixed;
+        background-size: cover;
+        color: purple;
+      }
+  
+      .container {
+        margin-top: 50px;
+      }
+  
+      .col-md-12 {
+        display: flex;
+        justify-content: center;
+      }
+  
+      .alert {
+        text-align: center;
+      }
+  
+      .col-md-4 {
+        margin-top: 10%;
+        text-align: center;
+        justify-content: center;
+        margin-left: 30%;
+        background-color: salmon;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px red;
+        transition: transform 0.3s ease-in-out;
+      }
+  
+      .col-md-4:hover {
+        transform: scale(1.05);
+      }
+  
+      .form-outline {
+        margin-bottom: 20px;
+      }
+  
+      h3 {
+        text-align: center;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        color: red;
+        background-color: palevioletred;
+        border-radius: 15%;
+      }
+  
+      button {
+        width: 100%;
+        padding: 10px;
+        border-radius: 30px;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+  
+      button:hover {
+        background-color: palevioletred;
+        color: green;
+      }
+  
+      .form-image {
+        margin-top: 20px;
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-12">
+        {% for message in messages %}
+          <h5>
+            <div class="alert alert-danger">
+              {{message}}
+            </div>
+          </h5>
+        {% endfor %}
+      </div>
+      <div class="row"></div>
+      <div class="row">
+        <div class="col-md-4">
+          <form method="post" action="{% url 'addc' %}" style="background-color: pink; height: 200px; padding-top: 10px; border-radius: 10px; padding-left: 20px; padding-right: 20px;">
+            {% csrf_token %}
+            <div class="form-outline">
+              <h3 style="margin-bottom: 3%;">COUNT UP SECTION </h3>
+              <input type="text" name="cname" placeholder="Enter Category" />
+            </div>
+            <button type="submit" >COUNT UP</button>
+            <br>
+            <br>
+            <br>
+            <br>
+            <img src="https://lh3.googleusercontent.com/p/AF1QipOexGE0UB16bE-40ew5Qa-NBt06AKzbJwF-RrAm=w1080-h608-p-no-v0" alt="Form Image" class="form-image" /> <!-- Add your image source -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>
+
+  
+  
+  
+{% endblock %}

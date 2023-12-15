@@ -1,0 +1,137 @@
+{% extends 'navbar_admin.html' %}
+{% block content %}
+{% load static %}
+
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url("https://wallpapers.com/images/hd/hd-river-in-the-mountains-kgb9wrcm1wmrfa5m.webp");
+     
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Ensure full height of the viewport */
+    }
+
+    .container {
+      background-color: transparent;
+      height: 600px;
+      width: 500px;
+      padding: 20px;
+      border-radius: 40px;
+      box-shadow: 0 4px 18px purple;
+      animation: fadeIn 0.5s ease-in-out; /* Add fadeIn animation */
+      margin-top: 4%;
+      
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 2;
+      }
+    }
+
+    .col-md-12 {
+      display: flex;
+      justify-content: center;
+    }
+
+    .alert {
+      text-align: center;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    h3 {
+      text-align: center;
+      color: blueviolet;
+      margin-bottom: 5%;
+    }
+
+    .form-outline {
+      margin-bottom: 20px;
+    }
+
+    input,
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: pink;
+      border-radius: 15%;
+      text-align: center;
+    }
+
+    button {
+      border-radius: 40px;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: orchid;
+      color: #fff;
+      transform: scale(1.07);
+    }
+
+    input[type="file"] {
+      border: none;
+      background-color: pink; /* Light grey background for file input */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="col-md-12">
+      {% for message in messages %}
+      <h5>
+        <div class="alert alert-danger">
+          {{message}}
+        </div>
+      </h5>
+      {% endfor %}
+    </div>
+    <form method="post" action="{% url 'add_pro' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-outline">
+        <h3>ADD PRODUCT</h3>
+        <input type="text" name="pname"  placeholder="Product Name" /><br>
+      </div>
+      <div class="form-outline">
+        <input type="address" name="pdes"  placeholder="Description" required /><br>
+      </div>
+      <div class="form-outline">
+        <select name="sel" >
+          <option value="">Select Category</option>
+          {% for c in cat %}
+          <option value="{{c.id}}">{{c.category_name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-outline">
+        <input type="number" name="price"  placeholder="Price" required /><br>
+      </div>
+      <div class="form-outline">
+        Upload Photo
+        <input type="file" name="file"  accept="image/*">
+      </div><br>
+      <button  type="submit" >ADD ON</button>
+    </form>
+  </div>
+</body>
+</html>
+
+
+  
+{% endblock %}
